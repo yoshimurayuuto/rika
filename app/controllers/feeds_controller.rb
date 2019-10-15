@@ -14,7 +14,16 @@ class FeedsController < ApplicationController
 
   # GET /feeds/new
   def new
-    @feed = Feed.new
+    if params[:back]
+      @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
+  end
+
+  def confirm
+    @feed = Feed.new(feed_params)
+    render :new if @feed.invalid?
   end
 
   # GET /feeds/1/edit
@@ -26,13 +35,13 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
 
-    respond_to do |format|
+    if params[:back]
+      render :new
+    else
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render :show, status: :created, location: @feed }
+        redirect_to feeds_path, notice: "ブログを作成しました！"
       else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        render 'new'
       end
     end
   end
