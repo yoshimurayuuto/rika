@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_032905) do
 
   create_table "feeds", force: :cascade do |t|
     t.text "image"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

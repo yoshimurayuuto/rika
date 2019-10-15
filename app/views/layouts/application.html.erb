@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <header>
+
+      <div class="container">
+        <div class="item"><a href="/users" class="btn login">ユーザー一覧</a></div>
+        <div class="item"><a href="/feeds" class="btn signup">画像一覧</a></div>
+        <div class="item"><a href="/feeds/new" class="btn login">画像投稿</a></div>
+        <!-- <div class="item"><a href="/sessions/new">ログイン</a></div> -->
+        <div class="item"><a href="/favorites" class="btn login"">お気に入りした画像一覧</a></div>
+      </div>
+    </header>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
