@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   # GET /feeds/new
@@ -23,6 +24,7 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
     render :new if @feed.invalid?
   end
 
@@ -34,7 +36,7 @@ class FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
+    @feed.user_id = current_user.id
     if params[:back]
       render :new
     else
