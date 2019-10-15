@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destoy]
   def new
     @user = User.new
   end
@@ -17,11 +18,36 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @favorites = @user.favorites
+    @feeds = Feed.all
+    if current_user != @user
+      flash[:error] = "権限がありません"
+      redirect_to users_path
+    end
   end
 
+  def edit
+
+  end
+
+  def destoy
+    @user.destroy
+    redirect_to users_path, notice:"ブログを削除しました！"
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'List was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
