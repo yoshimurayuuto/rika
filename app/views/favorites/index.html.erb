@@ -1,0 +1,9 @@
+<h2><%= current_user.name %>がお気に入りした画像一覧</h2>
+<% @favorites.each do |favorite| %>
+  <tr>
+    <td><%=image_tag favorite.image.url%></td>
+  </tr>
+<% end %>
+<br />
+
+<%= link_to 'user', users_path %>
