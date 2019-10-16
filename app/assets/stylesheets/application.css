@@ -127,3 +127,7 @@
    cursor: pointer;
    margin-left: 210px;
  }
+ .post {
+   width: 500px;
+   height: 500px;
+ }
