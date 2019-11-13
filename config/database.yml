@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: rika_production
-  username: app
+  username: rika
   password: <%= ENV['RIKA_DATABASE_PASSWORD'] %>
