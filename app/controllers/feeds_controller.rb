@@ -33,7 +33,7 @@ class FeedsController < ApplicationController
       render :new
     else
       if @feed.save
-        FeedMailer.feed_mail(@feed).deliver
+        FeedMailer.feed_mail(@feed).deliver  if Rails.env.development?
         redirect_to feeds_path, notice: "ブログを作成しました！"
       else
         render 'new'
