@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users, only: [:create, :destroy, :index, :show, :edit]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :favorites, only: [:create, :destroy, :index]
   root to: 'users#new'
