@@ -34,7 +34,7 @@ class FeedsController < ApplicationController
     else
       if @feed.save
         FeedMailer.feed_mail(@feed).deliver  if Rails.env.development?
-        redirect_to feeds_path, notice: "ブログを作成しました！"
+        redirect_to feeds_path, notice: "画像を投稿しました！"
       else
         render 'new'
       end
