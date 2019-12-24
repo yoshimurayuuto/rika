@@ -17,6 +17,8 @@ module Rika
       g.helper false
     end
     config.i18n.default_locale = :ja
+
+# 翻訳ファイルのディレクトを追加
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     # Settings in config/environments/* take precedence over those specified here.

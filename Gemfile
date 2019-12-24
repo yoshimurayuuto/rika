@@ -7,13 +7,13 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'rails', '~> 5.2.3'
-gem 'dotenv-rails' 
+gem 'dotenv-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'unicorn' # アプリケーションサーバのunicorn
 gem 'mini_racer', platforms: :ruby # デプロイ時に必要
 gem 'sass-rails', '~> 5.0'
-
+gem "subdomain_locale"
 gem 'uglifier', '>= 1.3.0'
 
 
@@ -40,7 +40,7 @@ group :development do
 
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-
+  gem 'gretel'
   gem 'letter_opener_web'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
