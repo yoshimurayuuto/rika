@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-
+  before_action :hello_world, only: [:index]
   def index
     @feeds = Feed.all
   end
@@ -33,8 +33,8 @@ class FeedsController < ApplicationController
       render :new
     else
       if @feed.save
-        FeedMailer.feed_mail(@feed).deliver
-        redirect_to feeds_path, notice: "ブログを作成しました！"
+        FeedMailer.feed_mail(@feed).deliver  if Rails.env.development?
+        redirect_to feeds_path, notice: "画像を投稿しました！"
       else
         render 'new'
       end

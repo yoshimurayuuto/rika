@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root  'users#new'
   resources :feeds do
     collection do
       post :confirm
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
   resources :users
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :favorites, only: [:create, :destroy, :index]
-  root to: 'users#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
