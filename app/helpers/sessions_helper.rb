@@ -5,4 +5,9 @@ module SessionsHelper
   def logged_in?
     current_user.present?
   end
+  def hello_world
+    if current_user == nil
+      redirect_to new_session_path, notice: 'ログインしてください'
+    end
+  end
 end

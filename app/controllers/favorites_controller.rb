@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :hello_world, only: [:index]
   def index
     @favorites = current_user.favorite_feeds
   end

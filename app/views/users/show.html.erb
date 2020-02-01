@@ -2,7 +2,7 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 <p id="notice"><%= notice %></p>
-
+<% breadcrumb :user, @user %>
 <p>
   <strong>Image:</strong>
   <% if @user.image.url.present? %>
@@ -32,10 +32,11 @@
         </tr>
       <% end %>
     <% end %>
+
     <% sum = 0 %>
     <% current_user.feeds.each do |feed| %>
       <% sum += feed.favorites.count %>
-      <% end %>
+    <% end %>
       <p>お気に入りされた合計数: <%= sum %></p>
 
 
